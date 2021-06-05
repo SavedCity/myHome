@@ -18,7 +18,10 @@ function Login() {
         password,
       };
 
-      await axios.post("http://localhost:3000/user/login", loginData);
+      await axios.post(
+        "https://home-decor-backend.herokuapp.com/user/login",
+        loginData
+      );
       await getLoggedIn();
       history.push("/");
     } catch (err) {

@@ -20,7 +20,10 @@ function Register() {
         passwordVerify,
       };
 
-      await axios.post("http://localhost:3000/user", registerData);
+      await axios.post(
+        "https://home-decor-backend.herokuapp.com/user",
+        registerData
+      );
       await getLoggedIn();
       history.push("/");
     } catch (err) {

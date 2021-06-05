@@ -7,7 +7,9 @@ function AuthConextProvider(props) {
   const [loggedIn, setLoggedIn] = useState(undefined);
 
   async function getLoggedIn() {
-    const loggedInRes = await axios.get("http://localhost:3000/user/loggedIn");
+    const loggedInRes = await axios.get(
+      "https://home-decor-backend.herokuapp.com/user/loggedIn"
+    );
     setLoggedIn(loggedInRes.data);
   }
 

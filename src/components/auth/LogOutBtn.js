@@ -9,7 +9,7 @@ function LogOutBtn() {
   const history = useHistory();
 
   async function logOut() {
-    await axios.get("http://localhost:3000/user/logout");
+    await axios.get("https://home-decor-backend.herokuapp.com/user/logout");
     await getLoggedIn();
     history.push("/");
   }

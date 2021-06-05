@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
 import AuthContext from "./context/AuthContext";
+import Home from "./components/Home";
 
 function Router() {
   const { loggedIn } = useContext(AuthContext);
@@ -14,6 +15,7 @@ function Router() {
       <Switch>
         <Route exact path="/">
           <h1>myHome</h1>
+          <Home />
         </Route>
         <Route path="/myBoard">
           <h1>myBoard</h1>
