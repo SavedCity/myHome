@@ -4,6 +4,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Navbar from "./components/Navbar";
 import AuthContext from "./context/AuthContext";
+import Home from "../src/components/Home";
 
 function Router() {
   const { loggedIn } = useContext(AuthContext);
@@ -14,6 +15,7 @@ function Router() {
       <Switch>
         <Route exact path="/">
           <h1>Home</h1>
+          <Home />
         </Route>
         {loggedIn === false && (
           <>
