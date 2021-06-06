@@ -5,25 +5,22 @@ import LogOutBtn from "./auth/LogOutBtn";
 
 function Navbar() {
   const { loggedIn } = useContext(AuthContext);
-  console.log(loggedIn);
 
   return (
     <div>
-      <Link to="/">myHome</Link>
-      <br />
-      {loggedIn === true ? (
-        <>
-          <Link to="/myBoard">myBoard</Link>
-          <LogOutBtn />
-        </>
-      ) : null}
-
-      {loggedIn === false ? (
+      <Link to="/">Home</Link>
+      {loggedIn === false && (
         <>
           <Link to="/register">Register</Link>
-          <Link to="/login">Log In</Link>
+          <Link to="/login">Log in</Link>
         </>
-      ) : null}
+      )}
+      {loggedIn === true && (
+        <>
+          <Link to="/board">Board</Link>
+          <LogOutBtn />
+        </>
+      )}
     </div>
   );
 }

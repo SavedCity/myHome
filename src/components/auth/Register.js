@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
 import axios from "axios";
-import AuthContext from "../../context/AuthContext";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 function Register() {
   const [username, setUsername] = useState("");
@@ -13,6 +13,7 @@ function Register() {
 
   async function register(e) {
     e.preventDefault();
+
     try {
       const registerData = {
         username,
@@ -20,8 +21,9 @@ function Register() {
         passwordVerify,
       };
 
+      // await axios.post("http://localhost:5000/auth/", registerData);
       await axios.post(
-        "https://home-decor-backend.herokuapp.com/user",
+        "https://home-decor-backend.herokuapp.com/auth",
         registerData
       );
       await getLoggedIn();
@@ -36,30 +38,23 @@ function Register() {
       <h1>Register a new account</h1>
       <form onSubmit={register}>
         <input
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-          type="text"
-          placeholder="Username"
+          type="Username"
+          placeholder="username"
+          onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
         <input
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
           type="password"
           placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
         <input
-          onChange={(e) => {
-            setPasswordVerify(e.target.value);
-          }}
           type="password"
           placeholder="Verify your password"
+          onChange={(e) => setPasswordVerify(e.target.value)}
           value={passwordVerify}
         />
-
         <button type="submit">Register</button>
       </form>
     </div>

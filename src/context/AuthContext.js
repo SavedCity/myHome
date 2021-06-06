@@ -1,14 +1,15 @@
-import React, { createContext, useEffect, useState } from "react";
 import axios from "axios";
+import React, { createContext, useEffect, useState } from "react";
 
 const AuthContext = createContext();
 
-function AuthConextProvider(props) {
+function AuthContextProvider(props) {
   const [loggedIn, setLoggedIn] = useState(undefined);
 
   async function getLoggedIn() {
+    // const loggedInRes = await axios.get("http://localhost:5000/auth/loggedIn");
     const loggedInRes = await axios.get(
-      "https://home-decor-backend.herokuapp.com/user/loggedIn"
+      "https://home-decor-backend.herokuapp.com/auth/loggedIn"
     );
     setLoggedIn(loggedInRes.data);
   }
@@ -25,4 +26,4 @@ function AuthConextProvider(props) {
 }
 
 export default AuthContext;
-export { AuthConextProvider };
+export { AuthContextProvider };

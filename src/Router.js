@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Register from "./components/auth/Register";
 import Login from "./components/auth/Login";
+import Register from "./components/auth/Register";
+import Navbar from "./components/Navbar";
 import AuthContext from "./context/AuthContext";
-import Home from "./components/Home";
 
 function Router() {
   const { loggedIn } = useContext(AuthContext);
@@ -14,13 +13,9 @@ function Router() {
       <Navbar />
       <Switch>
         <Route exact path="/">
-          <h1>myHome</h1>
-          <Home />
+          <h1>Home</h1>
         </Route>
-        <Route path="/myBoard">
-          <h1>myBoard</h1>
-        </Route>
-        {loggedIn === false ? (
+        {loggedIn === false && (
           <>
             <Route path="/register">
               <Register />
@@ -29,7 +24,14 @@ function Router() {
               <Login />
             </Route>
           </>
-        ) : null}
+        )}
+        {loggedIn === true && (
+          <>
+            <Route path="/board">
+              <h1>My board</h1>
+            </Route>
+          </>
+        )}
       </Switch>
     </BrowserRouter>
   );

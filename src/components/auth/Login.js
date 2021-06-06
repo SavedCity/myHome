@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
 import axios from "axios";
-import AuthContext from "../../context/AuthContext";
+import React, { useContext, useState } from "react";
 import { useHistory } from "react-router-dom";
+import AuthContext from "../../context/AuthContext";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -12,14 +12,16 @@ function Login() {
 
   async function login(e) {
     e.preventDefault();
+
     try {
       const loginData = {
         username,
         password,
       };
 
+      // await axios.post("http://localhost:5000/auth/login", loginData);
       await axios.post(
-        "https://home-decor-backend.herokuapp.com/user/login",
+        "https://home-decor-backend.herokuapp.com/auth/login",
         loginData
       );
       await getLoggedIn();
@@ -34,23 +36,18 @@ function Login() {
       <h1>Log in to your account</h1>
       <form onSubmit={login}>
         <input
-          onChange={(e) => {
-            setUsername(e.target.value);
-          }}
-          type="text"
-          placeholder="Username"
+          type="username"
+          placeholder="username"
+          onChange={(e) => setUsername(e.target.value)}
           value={username}
         />
         <input
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
           type="password"
           placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
-
-        <button type="submit">Log In</button>
+        <button type="submit">Log in</button>
       </form>
     </div>
   );
