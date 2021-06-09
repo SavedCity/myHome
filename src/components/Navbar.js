@@ -1,26 +1,49 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import UserContext from "../components/auth/Login";
 import LogOutBtn from "./auth/LogOutBtn";
+import NewListing from "../components/NewListing";
 
 function Navbar() {
   const { loggedIn } = useContext(AuthContext);
+  const username = useContext(UserContext);
+
+  function toggleDark(e) {
+    document.querySelector("body").style.background = "#181818";
+    document.getElementById("light-btn").style.display = "block";
+    e.target.style.display = "none";
+    document.querySelector("*").style.color = "#fff";
+  }
+  function toggleLight(e) {
+    document.querySelector("body").style.background = "#fff";
+    document.getElementById("dark-btn").style.display = "block";
+    e.target.style.display = "none";
+    document.querySelector("*").style.color = "#000";
+  }
 
   return (
-    <div>
+    <div className="nav">
       <Link to="/">Home</Link>
-      {loggedIn === false && (
-        <>
+      {loggedIn === false || loggedIn === undefined ? (
+        <section>
           <Link to="/register">Register</Link>
           <Link to="/login">Log in</Link>
-        </>
-      )}
-      {loggedIn === true && (
-        <>
-          <Link to="/board">Board</Link>
+        </section>
+      ) : (
+        <section>
+          <Link to="/saves">Saves</Link>
           <LogOutBtn />
-        </>
+        </section>
       )}
+
+      <button id="dark-btn" onClick={toggleDark}>
+        DARK
+      </button>
+      <button id="light-btn" onClick={toggleLight}>
+        LIGHT
+      </button>
+      <Link to="/new-listing">Add Listing</Link>
     </div>
   );
 }

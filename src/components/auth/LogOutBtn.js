@@ -12,10 +12,10 @@ function LogOutBtn() {
     // await axios.get("http://localhost:5000/auth/logout");
     await axios.get("https://home-decor-backend.herokuapp.com/auth/logout");
     await getLoggedIn();
-    history.push("/");
+    history.push("/login");
   }
 
-  return <button onClick={logOut}>Log out</button>;
+  return <span onClick={logOut}>Log out</span>;
 }
 
 export default LogOutBtn;

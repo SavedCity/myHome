@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
+import Navbar from "../../components/Navbar";
 
-function Login() {
+export const UserContext = React.createContext();
+
+function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -24,8 +27,16 @@ function Login() {
         "https://home-decor-backend.herokuapp.com/auth/login",
         loginData
       );
+
+      console.log(username);
+
       await getLoggedIn();
-      history.push("/");
+      history.push({
+        pathname: "/",
+        state: {
+          response: loginData,
+        },
+      });
     } catch (err) {
       console.error(err);
     }
@@ -49,6 +60,12 @@ function Login() {
         />
         <button type="submit">Log in</button>
       </form>
+      <h4>
+        Don't have an account? <Link to="/register">Sign Up</Link>
+      </h4>
+      <UserContext.Provider value={username}>
+        {props.children}
+      </UserContext.Provider>
     </div>
   );
 }

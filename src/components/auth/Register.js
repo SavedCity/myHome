@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 
 function Register() {
@@ -51,12 +51,15 @@ function Register() {
         />
         <input
           type="password"
-          placeholder="Verify your password"
+          placeholder="Verify password"
           onChange={(e) => setPasswordVerify(e.target.value)}
           value={passwordVerify}
         />
         <button type="submit">Register</button>
       </form>
+      <h4>
+        Have an account? <Link to="/login">Login</Link>
+      </h4>
     </div>
   );
 }
