@@ -24,16 +24,29 @@ function Navbar() {
 
   return (
     <div className="nav">
-      <Link to="/">Home</Link>
+      <Link className="home-link" to="/">
+        Home
+      </Link>
       {loggedIn === false || loggedIn === undefined ? (
         <section>
-          <Link to="/register">Register</Link>
-          <Link to="/login">Log in</Link>
+          <Link className="saves-link" to="/login">
+            Saves
+          </Link>
+          <Link className="add-link" to="/login">
+            Add Listing
+          </Link>
+          <Link className="login-link" to="/login">
+            Log in / Register
+          </Link>
         </section>
       ) : (
         <section>
-          <Link to="/saves">Saves</Link>
-          <Link to="/new-listing">Add Listing</Link>
+          <Link className="saves-link" to="/saves">
+            Saves
+          </Link>
+          <Link className="add-link" to="/new-listing">
+            Add Listing
+          </Link>
           <LogOutBtn />
         </section>
       )}
@@ -44,6 +57,15 @@ function Navbar() {
       <button id="light-btn" onClick={toggleLight}>
         LIGHT
       </button>
+      <Link to="/">
+        <div className="nav-logo-div">
+          <img
+            className="nav-logo-house"
+            src="https://www.pngrepo.com/download/29024/home-symbol.png"
+          />
+          <h2 className="nav-logo-name">myHome</h2>
+        </div>
+      </Link>
     </div>
   );
 }

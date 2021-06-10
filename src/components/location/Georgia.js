@@ -73,7 +73,7 @@ function Georgia() {
                       <p className="house-ba">{house.ba} bathrooms</p>
                       <p className="house-sqft">{house.sqft} sqft.</p>
                       <p className="house-address">
-                        {house.address} {house.city}, {house.location}{" "}
+                        {house.address} {house.city}, <br /> {house.location}{" "}
                         {house.zipcode}
                       </p>
                       <p className="house-yb"> Built in {house.yb}</p>

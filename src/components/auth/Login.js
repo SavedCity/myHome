@@ -10,7 +10,7 @@ function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const { getLoggedIn } = useContext(AuthContext);
+  const { getLoggedIn, setLoginUser } = useContext(AuthContext);
 
   const history = useHistory();
 
@@ -29,7 +29,7 @@ function Login(props) {
         loginData
       );
 
-      console.log(username);
+      setLoginUser(username);
 
       await getLoggedIn();
       history.push({
