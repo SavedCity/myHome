@@ -1,16 +1,17 @@
 import axios from "axios";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, createContext } from "react";
 import { useHistory, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import Navbar from "../../components/Navbar";
 
-export const UserContext = React.createContext();
+export const UserContext = createContext(null);
 
 function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const { getLoggedIn } = useContext(AuthContext);
+
   const history = useHistory();
 
   async function login(e) {
@@ -63,9 +64,6 @@ function Login(props) {
       <h4>
         Don't have an account? <Link to="/register">Sign Up</Link>
       </h4>
-      <UserContext.Provider value={username}>
-        {props.children}
-      </UserContext.Provider>
     </div>
   );
 }

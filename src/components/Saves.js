@@ -5,9 +5,6 @@ import { useLocation } from "react-router-dom";
 function Saves() {
   const [user, setUser] = useState([]);
 
-  const location = useLocation();
-  // console.log(location.state.response.username);
-
   // GETTING ALL THE USERS
   useEffect(() => {
     axios

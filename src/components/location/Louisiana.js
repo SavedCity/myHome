@@ -10,7 +10,7 @@ function Louisiana() {
   function renderData() {
     setLoadingData(true);
     axios
-      .get("http://localhost:5000/house")
+      .get("https://home-decor-backend.herokuapp.com/house")
       .then((res) => {
         setLouisiana(res.data);
         setLoadingData(false);
@@ -25,7 +25,9 @@ function Louisiana() {
   }, []);
 
   async function remove(event) {
-    await axios.delete("http://localhost:5000/house/" + event.target.value);
+    await axios.delete(
+      "https://home-decor-backend.herokuapp.com/house/" + event.target.value
+    );
     renderData();
   }
 
@@ -51,35 +53,33 @@ function Louisiana() {
                     </section>
                   )}
 
-                  {house.active ? (
+                  {house.active === "active" ? (
                     <p className="house-listedby">
                       Contact {house.listedBy} about this home
                     </p>
                   ) : null}
                 </div>
 
-                <div key={house._id} className="house-container">
-                  <img
-                    className="house-img"
-                    src={house.image}
-                    alt={house.location}
-                  />
-                  <div className="info">
-                    <h1 className="house-price">${house.price}</h1>
-                    <p className="house-bd">{house.bd} bedrooms</p>
-                    <p className="house-ba">{house.ba} bathrooms</p>
-                    <p className="house-sqft">{house.sqft} sqft.</p>
-                    <p className="house-address">
-                      {house.address} {house.city}, {house.location}{" "}
-                      {house.zipcode}
-                    </p>
-                    <p className="house-yb"> Built in {house.yb}</p>
+                <Link to={"/view/" + house._id}>
+                  <div key={house._id} className="house-container">
+                    <img
+                      className="house-img"
+                      src={house.image}
+                      alt={house.location}
+                    />
+                    <div className="info">
+                      <h1 className="house-price">${house.price}</h1>
+                      <p className="house-bd">{house.bd} bedrooms</p>
+                      <p className="house-ba">{house.ba} bathrooms</p>
+                      <p className="house-sqft">{house.sqft} sqft.</p>
+                      <p className="house-address">
+                        {house.address} {house.city}, {house.location}{" "}
+                        {house.zipcode}
+                      </p>
+                      <p className="house-yb"> Built in {house.yb}</p>
+                    </div>
                   </div>
-                </div>
-                <button value={house._id} onClick={remove}>
-                  DELETE
-                </button>
-                <Edit house={house} renderData={renderData} />
+                </Link>
               </div>
             ))}
         </div>

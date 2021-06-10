@@ -1,3 +1,5 @@
+/* ======================== NAVBAR ======================== */
+
 * {
   font-family: "open sans";
   /* margin: 20px; */
@@ -115,16 +117,16 @@
   letter-spacing: 3px;
   padding-left: 12px;
   min-width: 800px;
-  padding-bottom: 15px;
-  font-size: 1.2rem;
+  padding-bottom: 8px;
+  font-size: 1.3rem;
 }
 .house-ba {
   color: #fff;
   letter-spacing: 3px;
   padding-left: 12px;
   min-width: 800px;
-  padding-bottom: 15px;
-  font-size: 1.2rem;
+  padding-bottom: 8px;
+  font-size: 1.3rem;
 }
 
 .house-sqft {
@@ -132,24 +134,24 @@
   letter-spacing: 3px;
   padding-left: 12px;
   min-width: 800px;
-  padding-bottom: 15px;
-  font-size: 1.2rem;
+  padding-bottom: 8px;
+  font-size: 1.3rem;
 }
 .house-address {
   color: #fff;
   letter-spacing: 3px;
   padding-left: 12px;
   min-width: 800px;
-  padding-bottom: 15px;
-  font-size: 1.2rem;
+  padding-bottom: 8px;
+  font-size: 1.3rem;
 }
 .house-yb {
   color: #fff;
   letter-spacing: 3px;
   padding-left: 12px;
   min-width: 800px;
-  padding-bottom: 15px;
-  font-size: 1.2rem;
+  padding-bottom: 8px;
+  font-size: 1.3rem;
 }
 .home-links {
   display: flex;
@@ -157,13 +159,13 @@
 }
 
 a {
-  font-size: 20px;
+  /* font-size: 20px; */
   text-decoration: none;
-  background: #282828;
-  color: #fff;
-  padding: 2px 7px;
-  border-radius: 2px;
-  margin: 10px;
+  /* background: #282828; */
+  /* color: #fff; */
+  /* padding: 2px 7px; */
+  /* border-radius: 2px;
+  margin: 10px; */
 }
 
 span {
@@ -233,4 +235,122 @@ input {
   height: 50px;
   margin-top: -15px;
   margin-left: -15px;
+}
+
+/* ========================= VIEW LISTING ======================= */
+
+.image-view {
+  width: 100%;
+  height: 566px;
+  vertical-align: middle;
+}
+
+.mySlides {
+  display: none;
+}
+
+/* Slideshow container */
+.slideshow-container {
+  /* max-width: 1000px; */
+  position: relative;
+  margin: auto;
+  width: 45%;
+}
+
+/* Next & previous buttons */
+.prev {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 10px 12px 13px 5px;
+  margin: -22px 0 0 0;
+  color: #000;
+  font-size: 38px;
+  transition: 0.3s;
+  border-radius: 0 50px 50px 0;
+  user-select: none;
+  background: #fff9;
+  font-weight: 100;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 50px 0 0 50px;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 10px 5px 13px 12px;
+  margin: -22px 0 0 0;
+  color: #000;
+  font-size: 38px;
+  transition: 0.3s;
+  user-select: none;
+  background: #fff9;
+  font-weight: 100;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background: #fff;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 14px;
+  padding: 10px 17px 15px 10px;
+  position: absolute;
+  top: 0;
+  background: #1f1f1f;
+  border-radius: 0 0 100% 0;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  from {
+    left: 0.9;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev,
+  .next,
+  .text {
+    font-size: 11px;
+  }
 }

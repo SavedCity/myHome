@@ -33,6 +33,7 @@ function Navbar() {
       ) : (
         <section>
           <Link to="/saves">Saves</Link>
+          <Link to="/new-listing">Add Listing</Link>
           <LogOutBtn />
         </section>
       )}
@@ -43,7 +44,6 @@ function Navbar() {
       <button id="light-btn" onClick={toggleLight}>
         LIGHT
       </button>
-      <Link to="/new-listing">Add Listing</Link>
     </div>
   );
 }

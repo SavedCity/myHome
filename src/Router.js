@@ -18,6 +18,9 @@ import Georgia from "../src/components/location/Georgia";
 import Louisiana from "../src/components/location/Louisiana";
 import Virginia from "../src/components/location/Virginia";
 import New_Listing from "../src/components/NewListing";
+import View from "../src/components/View";
+import Edit from "../src/components/Edit";
+import UserContext from "../src/components/auth/Login";
 
 function Router() {
   const { loggedIn } = useContext(AuthContext);
@@ -27,10 +30,9 @@ function Router() {
       <Navbar />
 
       <Switch>
-        <Route exact path="/">
-          <h1>Home</h1>
-          <Home />
-        </Route>
+        <Route exact path="/" component={Home} />
+
+        <Route path="/view/:_id" component={View} />
 
         <Route path="/TX" component={Texas} />
 
@@ -45,8 +47,6 @@ function Router() {
         <Route path="/LA" component={Louisiana} />
 
         <Route path="/VA" component={Virginia} />
-
-        <Route path="/new-listing" component={New_Listing} />
 
         {loggedIn === false && (
           <Switch>
@@ -64,6 +64,7 @@ function Router() {
               <h1>My Saves</h1>
               <Saves />
             </Route>
+            <Route path="/new-listing" component={New_Listing} />
           </Switch>
         )}
       </Switch>

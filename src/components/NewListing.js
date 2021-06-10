@@ -6,6 +6,10 @@ function NewListing() {
   const [location, setLocation] = useState("");
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
+  const [image2, setImage2] = useState("");
+  const [image3, setImage3] = useState("");
+  const [image4, setImage4] = useState("");
+  const [image5, setImage5] = useState("");
   const [bd, setBd] = useState(1);
   const [ba, setBa] = useState(1);
   const [sqft, setSqft] = useState("");
@@ -22,7 +26,7 @@ function NewListing() {
 
   function renderData() {
     axios
-      .get("http://localhost:5000/house")
+      .get("https://home-decor-backend.herokuapp.com")
       .then((res) => {
         setData(res.data);
       })
@@ -31,12 +35,16 @@ function NewListing() {
       });
   }
 
-  function add(event) {
+  async function add(event) {
     event.preventDefault();
-    axios.post("http://localhost:5000/house", {
+    await axios.post("https://home-decor-backend.herokuapp.com/house", {
       location: location,
       price: price,
       image: image,
+      image2: image2,
+      image3: image3,
+      image4: image4,
+      image5: image5,
       bd: bd,
       ba: ba,
       sqft: sqft,
@@ -85,7 +93,7 @@ function NewListing() {
         type="number"
       />
 
-      <label>Image</label>
+      <label>Images</label>
       <input
         onChange={(event) => {
           setImage(event.target.value);
@@ -93,7 +101,47 @@ function NewListing() {
         required
         value={image}
         name="image"
-        placeholder="Image"
+        placeholder="Image 1"
+        type="text"
+      />
+      <input
+        onChange={(event) => {
+          setImage2(event.target.value);
+        }}
+        required
+        value={image2}
+        name="image2"
+        placeholder="Image 2"
+        type="text"
+      />
+      <input
+        onChange={(event) => {
+          setImage3(event.target.value);
+        }}
+        required
+        value={image3}
+        name="image3"
+        placeholder="Image 3"
+        type="text"
+      />
+      <input
+        onChange={(event) => {
+          setImage4(event.target.value);
+        }}
+        required
+        value={image4}
+        name="image4"
+        placeholder="Image 4"
+        type="text"
+      />
+      <input
+        onChange={(event) => {
+          setImage5(event.target.value);
+        }}
+        required
+        value={image5}
+        name="image5"
+        placeholder="Image 5"
         type="text"
       />
 
