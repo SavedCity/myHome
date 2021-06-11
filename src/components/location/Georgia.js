@@ -37,6 +37,8 @@ function Georgia() {
       {!loadingData ? (
         <div className="houses">
           {georgia
+            .slice(0)
+            .reverse()
             .filter((array) => array.location.includes("GA"))
             .map((house, key) => (
               <div key={key} className="house-container-outer">
