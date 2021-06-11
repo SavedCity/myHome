@@ -26,22 +26,23 @@ body {
 
 .nav-logo-div {
   position: fixed;
-  top: 10px;
-  left: 46%;
+  top: 22px;
+  left: 47%;
   display: flex;
   align-items: center;
   margin: 0;
 }
 
 .nav-logo-house {
-  width: 45px;
-  height: 45px;
+  width: 34px;
+  height: 34px;
 }
 
 .nav-logo-name {
-  margin: 15px 0 0 10px;
+  margin: 10px 0 0 10px;
   color: #1f1f1f;
   font-weight: 400;
+  font-size: 1.2rem;
 }
 
 .login-link::after,
@@ -199,6 +200,85 @@ body {
 }
 
 /* ========================== HOME SLIDESHOW ======================== */
+
+/* Slideshow container */
+.home-slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.home-slideshow-img {
+  width: 100%;
+  opacity: 0.9;
+  box-shadow: 10px 10px 10px #0002;
+  height: 663px;
+}
+
+.homeSlides {
+  /* display: none; */
+  vertical-align: middle;
+  /* opacity: 0.3; */
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 6px;
+  width: 6px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #333;
+}
+
+/* Fading animation */
+.homeFade {
+  -webkit-animation-name: homeFade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: homeFade;
+  animation-duration: 2.5s;
+}
+
+@-webkit-keyframes homeFade {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes homeFade {
+  from {
+    opacity: 0.8;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {
+    font-size: 11px;
+  }
+}
 
 /* ========================== STATE LISTINGS ======================== */
 

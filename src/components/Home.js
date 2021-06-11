@@ -6,15 +6,42 @@ import AuthContext from "../context/AuthContext";
 function Home() {
   const [data, setData] = useState([]);
   const [user, setUser] = useState({});
-  const { userInfo, getUserInfo, loggedIn } = useContext(AuthContext);
+  const { userInfo, getUserInfo, loggedIn, view, setView } = useContext(
+    AuthContext
+  );
   const username = userInfo && loggedIn ? userInfo.username : "";
+  // const [stopSlideshow, setStopSlideshow] = useState(false);
+  // const slideImages = [
+  //   "https://images.unsplash.com/photo-1449844908441-8829872d2607?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+  //   "https://images.unsplash.com/photo-1464146072230-91cabc968266?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+  //   "https://images.unsplash.com/photo-1492889971304-ac16ab4a4a5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1053&q=80",
+  //   "https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1053&q=80",
+  //   "https://images.unsplash.com/photo-1584738766473-61c083514bf4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+  //   "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80",
+  //   "https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
+  // ];
+  // const [currentSlide, setCurrentSlide] = useState(slideImages[0]);
+
+  // function slides(array) {
+  //   for (var i = 0; i < array.length - 1; i++) {
+  //     if (i === array.length - 1) {
+  //       setCurrentSlide(array[0]);
+  //       i = 0;
+  //     } else {
+  //       setTimeout(() => {
+  //         setCurrentSlide(array[i]);
+  //
+  //         console.log(i);
+  //       }, 3300);
+  //     }
+  //   }
+  // }
 
   function renderData() {
     axios
       .get("https://home-decor-backend.herokuapp.com/house")
       .then((res) => {
         setData(res.data);
-        showSlides();
       })
       .catch((err) => {
         console.log(err);
@@ -23,7 +50,9 @@ function Home() {
 
   useEffect(() => {
     renderData();
-    // setUser(userInfo);
+    // slides(slideImages);
+
+    showSlides();
   }, []);
 
   let tx = 0;
@@ -79,7 +108,8 @@ function Home() {
 
   function showSlides() {
     var i;
-    var slides = document.getElementById("homeSlides");
+    var slides = document.getElementsByClassName("homeSlides");
+    var dots = document.getElementsByClassName("dot");
     for (i = 0; i < slides.length; i++) {
       slides[i].style.display = "none";
     }
@@ -87,32 +117,76 @@ function Home() {
     if (slideIndex > slides.length) {
       slideIndex = 1;
     }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
 
+    dots[slideIndex - 1].className += " active";
     slides[slideIndex - 1].style.display = "block";
-    setTimeout(showSlides, 2000); //
+    setTimeout(showSlides, 3300);
   }
 
   return (
     <div>
-      <div class="home-slideshow-container">
-        <div id="homeSlides fade">
+      <div className="home-slideshow-container">
+        <div className="homeSlides homeFade">
           <img
+            className="home-slideshow-img"
             src="https://images.unsplash.com/photo-1449844908441-8829872d2607?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
             alt="house"
           />
         </div>
-        <div id="homeSlides fade">
+        <div className="homeSlides homeFade">
           <img
-            src="https://images.unsplash.com/photo-1494526585095-c41746248156?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+            className="home-slideshow-img"
+            src="https://images.unsplash.com/photo-1464146072230-91cabc968266?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
             alt="house"
           />
         </div>
-        <div id="homeSlides fade">
+        <div className="homeSlides homeFade">
           <img
+            className="home-slideshow-img"
             src="https://images.unsplash.com/photo-1492889971304-ac16ab4a4a5a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1053&q=80"
             alt="house"
           />
         </div>
+        <div className="homeSlides homeFade">
+          <img
+            className="home-slideshow-img"
+            src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1053&q=80"
+            alt="house"
+          />
+        </div>
+        <div className="homeSlides homeFade">
+          <img
+            className="home-slideshow-img"
+            src="https://images.unsplash.com/photo-1584738766473-61c083514bf4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+            alt="house"
+          />
+        </div>
+        <div className="homeSlides homeFade">
+          <img
+            className="home-slideshow-img"
+            src="https://images.unsplash.com/photo-1558036117-15d82a90b9b1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+            alt="house"
+          />
+        </div>
+        <div className="homeSlides homeFade">
+          <img
+            className="home-slideshow-img"
+            src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+            alt="house"
+          />
+        </div>
+      </div>
+      <div style={{ textAlign: "center" }}>
+        <span className="dot"></span>
+        <span className="dot"></span>
+        <span className="dot"></span>
+        <span className="dot"></span>
+        <span className="dot"></span>
+        <span className="dot"></span>
+        <span className="dot"></span>
       </div>
 
       <div className="home-links">

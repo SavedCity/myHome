@@ -31,7 +31,6 @@ function AuthContextProvider(props) {
 
   useEffect(() => {
     getLoggedIn();
-    getUserInfo();
   }, []);
 
   useEffect(() => {
@@ -42,7 +41,13 @@ function AuthContextProvider(props) {
 
   return (
     <AuthContext.Provider
-      value={{ loggedIn, getLoggedIn, setLoginUser, userInfo, getUserInfo }}
+      value={{
+        loggedIn,
+        getLoggedIn,
+        setLoginUser,
+        userInfo,
+        getUserInfo,
+      }}
     >
       {props.children}
     </AuthContext.Provider>

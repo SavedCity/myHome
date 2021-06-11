@@ -12,7 +12,7 @@ function LogOutBtn() {
     // await axios.get("http://localhost:5000/auth/logout");
     await axios.get("https://home-decor-backend.herokuapp.com/auth/logout");
     await getLoggedIn();
-    history.push("/login");
+    history.push("/");
   }
 
   return (
