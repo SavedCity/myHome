@@ -33,7 +33,7 @@ function South_Carolina() {
 
   return (
     <div className="main-container">
-      <h1>South Carolina Homes</h1>
+      <h1 className="state-name">South Carolina Homes</h1>
       {!loadingData ? (
         <div className="houses">
           {north_carolina
@@ -92,6 +92,24 @@ function South_Carolina() {
           />
         </div>
       )}
+      <div className="footer">
+        <div>
+          <h2>Andy Checo</h2>
+          <a href="https://www.linkedin.com/in/andy-checo/">LinkedIn</a>
+          <a href="https://github.com/savedcity/">Github</a>
+        </div>
+        <div>
+          <Link to="/">
+            <div className="foot-logo-div">
+              <img
+                className="nav-logo-house"
+                src="https://www.pngrepo.com/download/29024/home-symbol.png"
+              />
+              <h2 className="nav-logo-name">myHome</h2>
+            </div>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

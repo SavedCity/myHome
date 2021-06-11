@@ -22,11 +22,50 @@ function Navbar() {
     document.querySelector("*").style.color = "#000";
   }
 
+  window.onscroll = () => {
+    let nav = document.querySelector(".nav");
+
+    // NAV BAR ON SCROLL CHANGES CSS
+    if (window.scrollY < 90) {
+      nav.classList.remove("scroll");
+    } else {
+      nav.classList.add("scroll");
+    }
+  };
+
   return (
     <div className="nav">
       <Link className="home-link" to="/">
         Home
       </Link>
+      <div className="dropdown">
+        <button className="dropbtn">
+          Location <i class="fa fa-caret-down"></i>
+        </button>
+        <div className="dropdown-content">
+          <Link className="drop-link" to="/TX">
+            Texas
+          </Link>
+          <Link className="drop-link" to="/FL">
+            Florida
+          </Link>
+          <Link className="drop-link" to="/SC">
+            South Carolina
+          </Link>
+          <Link className="drop-link" to="/NC">
+            North Carolina
+          </Link>
+          <Link className="drop-link" to="/GA">
+            Georgia
+          </Link>
+          <Link className="drop-link" to="/LA">
+            Lousiana
+          </Link>
+          <Link className="drop-link" to="/VA">
+            Virginia
+          </Link>
+        </div>
+      </div>
       {loggedIn === false || loggedIn === undefined ? (
         <section>
           <Link className="saves-link" to="/login">

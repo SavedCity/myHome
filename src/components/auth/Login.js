@@ -4,7 +4,7 @@ import { useHistory, Link } from "react-router-dom";
 import AuthContext from "../../context/AuthContext";
 import Navbar from "../../components/Navbar";
 
-export const UserContext = createContext(null);
+export const UserContext = createContext();
 
 function Login(props) {
   const [username, setUsername] = useState("");
@@ -43,26 +43,36 @@ function Login(props) {
   }
 
   return (
-    <div>
-      <h1>Log in to your account</h1>
+    <div className="login-container">
+      <h1 className="login-title">Log in to your account</h1>
       <form onSubmit={login}>
-        <input
-          type="username"
-          placeholder="username"
-          onChange={(e) => setUsername(e.target.value)}
-          value={username}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-        />
-        <button type="submit">Log in</button>
+        <div className="login-div">
+          <label>Username</label>
+          <input
+            className="login-inputs"
+            type="username"
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+            value={username}
+          />
+          <label>Password</label>
+          <input
+            className="login-inputs"
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+            value={password}
+          />
+          <button type="submit">LOG IN</button>
+          <h4>
+            Don't have an account?{" "}
+            <Link style={{ marginLeft: "5px" }} to="/register">
+              {" "}
+              Sign Up
+            </Link>
+          </h4>
+        </div>
       </form>
-      <h4>
-        Don't have an account? <Link to="/register">Sign Up</Link>
-      </h4>
     </div>
   );
 }

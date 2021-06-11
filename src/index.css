@@ -2,7 +2,8 @@
 
 * {
   font-family: montserrat;
-  /* margin: 20px; */
+  margin: 0px;
+  letter-spacing: 0.5px;
 }
 a {
   text-decoration: none;
@@ -12,9 +13,18 @@ body {
   margin-top: 90px;
 }
 
+.username {
+  position: fixed;
+  top: 7px;
+  left: 20px;
+  z-index: 1;
+  font-weight: 300;
+  font-size: 1.5rem;
+}
+
 .nav {
-  background: #ddd;
-  height: 70px;
+  /* background: #fff; */
+  height: 76px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -22,12 +32,74 @@ body {
   top: 0;
   left: 0;
   z-index: 1;
+  transition: 0.5s;
+}
+
+.nav.scroll {
+  background: #fff;
+  transition: 0.5s;
+  box-shadow: 0 0 10px #0003;
+}
+
+.dropdown {
+  overflow: hidden;
+}
+
+.dropbtn {
+  position: fixed;
+  left: 190px;
+  font-weight: 400;
+  top: 10px;
+  font-size: 1.2rem;
+}
+
+.dropdown .dropbtn {
+  border: none;
+  outline: none;
+  color: #000;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar .drop-link:hover,
+.dropdown:hover .dropbtn {
+  background-color: #fff0;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  left: 172px;
+  top: 60px;
+}
+
+.dropdown-content .drop-link {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content .drop-link:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .nav-logo-div {
   position: fixed;
   top: 22px;
-  left: 47%;
+  left: 46.6%;
   display: flex;
   align-items: center;
   margin: 0;
@@ -89,27 +161,27 @@ body {
   color: #000;
   color: #000;
   position: fixed;
-  top: 25px;
-  font-size: 0.95rem;
-  left: 40px;
+  top: 20px;
+  left: 80px;
   padding: 0.2em 0;
   overflow: hidden;
+  font-size: 1.3rem;
 }
 .saves-link {
   color: #000;
   position: fixed;
-  top: 25px;
-  right: 430px;
-  font-size: 0.95rem;
+  top: 20px;
+  right: 470px;
+  font-size: 1.3rem;
   padding: 0.2em 0;
   overflow: hidden;
 }
 .add-link {
   color: #000;
   position: fixed;
-  top: 25px;
-  right: 510px;
-  font-size: 0.95rem;
+  top: 20px;
+  right: 570px;
+  font-size: 1.3rem;
   padding: 0.2em 0;
   overflow: hidden;
 }
@@ -120,10 +192,10 @@ body {
   display: block;
   position: fixed;
   padding: 0.2em 0;
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   position: fixed;
   right: 80px;
-  top: 25px;
+  top: 20px;
   display: flex;
 }
 
@@ -155,10 +227,10 @@ body {
   display: block;
   position: fixed;
   padding: 0.2em 0;
-  font-size: 0.95rem;
+  font-size: 1.3rem;
   position: fixed;
   right: 80px;
-  top: 25px;
+  top: 20px;
   display: flex;
   cursor: pointer;
 }
@@ -171,9 +243,9 @@ body {
   border-radius: 2px;
   transition: 0.3s;
   position: fixed;
-  right: 285px;
-  top: 23px;
-  font-size: 0.94rem;
+  right: 305px;
+  top: 20px;
+  font-size: 1.3rem;
 }
 #dark-btn:hover {
   background: #3f3f3f;
@@ -190,9 +262,9 @@ body {
   border-radius: 2px;
   padding: 5px 10px;
   position: fixed;
-  right: 285px;
-  top: 23px;
-  font-size: 0.95rem;
+  right: 305px;
+  top: 20px;
+  font-size: 1.3rem;
 }
 #light-btn:hover {
   background: #9f9f9f;
@@ -202,7 +274,7 @@ body {
 /* ========================== HOME SLIDESHOW ======================== */
 
 /* Slideshow container */
-.home-slideshow-container {
+/* .home-slideshow-container {
   max-width: 1000px;
   position: relative;
   margin: auto;
@@ -216,12 +288,9 @@ body {
 }
 
 .homeSlides {
-  /* display: none; */
   vertical-align: middle;
-  /* opacity: 0.3; */
 }
 
-/* Caption text */
 .text {
   color: #f2f2f2;
   font-size: 15px;
@@ -232,7 +301,6 @@ body {
   text-align: center;
 }
 
-/* The dots/bullets/indicators */
 .dot {
   height: 6px;
   width: 6px;
@@ -247,7 +315,6 @@ body {
   background-color: #333;
 }
 
-/* Fading animation */
 .homeFade {
   -webkit-animation-name: homeFade;
   -webkit-animation-duration: 1.5s;
@@ -273,13 +340,81 @@ body {
   }
 }
 
-/* On smaller screens, decrease text size */
 @media only screen and (max-width: 300px) {
   .text {
     font-size: 11px;
   }
+} */
+.home-img-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.home-img-div > div > h1 {
+  font-weight: 300;
+  color: #333;
+  font-size: 2rem;
+  margin: 50px;
 }
 
+.home-img-div > section > h2 {
+  font-weight: 400;
+  color: #0009;
+  font-size: 2rem;
+  text-align: center;
+}
+
+.home-img-div > section {
+  padding: 50px;
+  border-bottom: 1px solid #0004;
+  margin-bottom: 90px;
+  width: 80%;
+}
+
+.home-div {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.home-slideshow-img {
+  opacity: 0.9;
+  width: 60%;
+  box-shadow: 10px 10px 10px #0003;
+  max-height: 755px;
+}
+
+.home-images {
+  width: 600px;
+  height: 430px;
+  margin: 20px;
+  transition: 0.3s;
+}
+.home-images:hover {
+  opacity: 0.9;
+  box-shadow: 5px 5px 10px #0003;
+}
+.home-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.home-links > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.home-links > div > h1 {
+  font-weight: 300;
+  margin: 50px 0 0px 0;
+  /* border-bottom: 1px solid #0005; */
+}
+.home-links > div > h2 {
+  font-weight: 200;
+  margin: 0 0 50px 0;
+}
 /* ========================== STATE LISTINGS ======================== */
 
 .houses {
@@ -292,6 +427,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 14px;
 }
 
 .status {
@@ -386,7 +522,8 @@ body {
   padding-left: 12px;
   min-width: 800px;
   padding-bottom: 8px;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  margin: 15px 0 10px 0;
 }
 .house-ba {
   color: #fff;
@@ -394,7 +531,8 @@ body {
   padding-left: 12px;
   min-width: 800px;
   padding-bottom: 8px;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  margin: 10px 0 10px 0;
 }
 
 .house-sqft {
@@ -403,7 +541,8 @@ body {
   padding-left: 12px;
   min-width: 800px;
   padding-bottom: 8px;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  margin: 10px 0 10px 0;
 }
 .house-address {
   color: #fff;
@@ -411,7 +550,8 @@ body {
   padding-left: 12px;
   min-width: 800px;
   padding-bottom: 8px;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
+  margin: 10px 0 10px 0;
 }
 .house-yb {
   color: #fff;
@@ -419,11 +559,8 @@ body {
   padding-left: 12px;
   min-width: 800px;
   padding-bottom: 8px;
-  font-size: 1.3rem;
-}
-.home-links {
-  display: flex;
-  align-items: center;
+  font-size: 1.4rem;
+  margin: 5px 0 0px 0;
 }
 
 /* ========================== LOADING ICON ========================== */
@@ -431,7 +568,7 @@ body {
 .loading {
   box-sizing: border-box;
   position: absolute;
-  top: 50%;
+  top: 33%;
   left: 49%;
   width: 80px;
   height: 80px;
@@ -454,7 +591,7 @@ body {
 
 .house {
   position: absolute;
-  top: 51.5%;
+  top: 33.5%;
   left: 49.8%;
   width: 50px;
   height: 50px;
@@ -463,6 +600,19 @@ body {
 }
 
 /* ========================= VIEW LISTING ======================= */
+
+.state-name {
+  text-align: center;
+  margin: 40px;
+  font-weight: 300;
+  padding-top: 70px;
+  border-bottom: 1px solid #0002;
+  padding-bottom: 30px;
+}
+
+.view-container {
+  padding-top: 70px;
+}
 
 .image-view {
   width: 100%;
@@ -578,4 +728,270 @@ body {
   .text {
     font-size: 11px;
   }
+}
+
+/* ================================== LOGIN ================================== */
+
+.login-title {
+  text-align: center;
+  font-weight: 300;
+  color: #0009;
+  padding-top: 90px;
+}
+
+.login-div {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.login-div > label {
+  color: #000;
+  width: 30.5%;
+  margin-bottom: 0px;
+  margin-top: 20px;
+}
+
+.login-inputs {
+  height: 47px;
+  width: 30%;
+  margin: 7px;
+  padding-left: 10px;
+  font-size: 1rem;
+  outline-color: #0005;
+  outline: 2px;
+  border: 1px solid #bbb;
+  border-radius: 1px;
+}
+
+.login-inputs:hover {
+  border: 1px solid #000;
+}
+
+.login-div > button {
+  width: 10%;
+  padding: 10px 5px;
+  margin: 10px;
+  font-size: 1rem;
+  font-weight: 400;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 1px;
+}
+
+.login-div > button:hover {
+  background: #0002;
+}
+.login-div > h4 {
+  font-weight: 400;
+  margin-top: 20px;
+}
+.login-div > h4 > a {
+  color: #555;
+  transition: 0.3s;
+}
+.login-div > h4 > a:hover {
+  color: #000;
+}
+
+/* ================================== ADD ================================== */
+
+.add-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.add-container > h1 {
+  font-weight: 200;
+  padding: 80px 0 40px 0;
+}
+.add-container > label {
+  width: 20%;
+  margin: 15px 0 2px 0;
+}
+.add-container > input {
+  width: 19.5%;
+  height: 36px;
+  outline-color: #0007;
+  border: 1px solid #999;
+  outline: 1px;
+  border-radius: 1px;
+  padding-left: 10px;
+}
+
+.add-container > select {
+  width: 20.2%;
+  height: 36px;
+  outline-color: #0007;
+  border: 1px solid #999;
+  outline: 1px;
+  border-radius: 1px;
+  padding-left: 10px;
+}
+.add-container > input:hover {
+  border: 1px solid;
+}
+
+.add-img-div {
+  position: fixed;
+  left: 10%;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+}
+.add-img-div > label {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 200;
+}
+.add-img-div > input {
+  height: 30px;
+  margin: 10px;
+  width: 300px;
+  outline-color: #0007;
+  border: 1px solid #999;
+  outline: 1px;
+  border-radius: 1px;
+  padding-left: 10px;
+}
+.add-img-div > input:hover {
+  border: 1px solid #000;
+}
+.add-submit {
+  border: none !important;
+  background: none;
+  cursor: pointer;
+  margin: 20px 0 100px 0;
+  transition: 0.3s;
+}
+.add-submit:hover {
+  background: #0002;
+}
+
+.add-address-div {
+  position: fixed;
+  right: 10%;
+  top: 30%;
+  display: flex;
+  flex-direction: column;
+}
+
+.add-address-div > label {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+.add-address-div > input {
+  height: 36px;
+  margin: 10px;
+  width: 300px;
+  outline-color: #0007;
+  border: 1px solid #999;
+  outline: 1px;
+  border-radius: 1px;
+  padding-left: 10px;
+}
+.add-address-div > input:hover {
+  border: 1px solid #000;
+}
+
+.add-address-div > label {
+  font-size: 1.2rem;
+  font-weight: 200;
+  margin-left: 13px;
+}
+.add-address-div > select {
+  height: 36px;
+  margin: 10px;
+  width: 314px;
+  outline-color: #0007;
+  border: 1px solid #999;
+  outline: 1px;
+  border-radius: 1px;
+  padding-left: 10px;
+}
+.add-address-div > select:hover {
+  border: 1px solid #000;
+}
+
+.delete {
+  border: none;
+  background: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 1.3rem;
+  position: absolute;
+  bottom: 0px;
+  right: 50px;
+}
+.delete:hover {
+  color: #900;
+}
+
+.show-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 0;
+  border-bottom: 1px solid #0003;
+}
+.show-details > h2 {
+  font-size: 2.9rem;
+  font-weight: 400;
+  border-bottom: 1px solid #0005;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+.show-details > h3 {
+  color: #0009;
+  margin: 8px;
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.show-details > h4 {
+  color: #0009;
+  margin: 6px;
+  font-size: 1.4rem;
+  text-align: center;
+  font-weight: 400;
+}
+/* ================================== FOOTER ================================== */
+
+.footer {
+  background: #0001;
+  display: flex;
+  justify-content: center;
+  margin: 130px 0 0px 0;
+  padding: 60px;
+}
+
+.footer > div > h2 {
+  font-weight: 300;
+  margin-right: 20px;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #0003;
+  padding-bottom: 5px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.footer > div > a {
+  font-weight: 300;
+  margin-right: 20px;
+  font-size: 1.2rem;
+  color: #000;
+}
+.footer > div > a:hover {
+  color: #3f3f3f;
+}
+
+.foot-logo-div {
+  display: flex;
+  align-items: center;
+  margin-top: 13px;
+  margin-left: 20px;
 }

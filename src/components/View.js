@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Edit from "./Edit";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
+import AuthContext from "../context/AuthContext";
 
 export default function View(props) {
   const [listing, setListing] = useState([]);
   const listingId = props.match.params._id;
   const [loadingData, setLoadingData] = useState(false);
+  const { loggedIn } = useContext(AuthContext);
 
   const history = useHistory();
 
@@ -57,28 +59,9 @@ export default function View(props) {
   }
 
   return (
-    <div>
+    <div className="view-container">
       {!loadingData ? (
         <>
-          <div className="top-info-div">
-            {listing.active === "active" ? (
-              <section className="status">
-                <div className="active-status"></div>
-                <h4 className="house-active">Active</h4>
-              </section>
-            ) : (
-              <section className="status">
-                <div className="inactive-status"></div>
-                <h4 className="house-inactive">Inactive</h4>
-              </section>
-            )}
-
-            {listing.active === "active" ? (
-              <p className="house-listedby">
-                Contact {listing.listedBy} about this home
-              </p>
-            ) : null}
-          </div>
           <div className="slideshow-container">
             <div className="mySlides fade">
               <div class="numbertext">1 / 5</div>
@@ -168,19 +151,25 @@ export default function View(props) {
             </a>
           </div>
 
-          <h2>{listing.price}</h2>
-          <p>{listing.bd} bedrooms</p>
-          <p>{listing.ba} bathrooms</p>
-          <p>{listing.sqft} sqft.</p>
-          <p>
-            {listing.address} {listing.city}, {listing.location}{" "}
-            {listing.zipcode}
-          </p>
-          <p> Built in {listing.yb}</p>
-          <button value={listing._id} onClick={remove}>
-            DELETE
-          </button>
-          <Edit house={listing} renderData={renderData} />
+          <div className="show-details">
+            <h2>${listing.price}</h2>
+            <h3>{listing.bd} bedrooms</h3>
+            <h3>{listing.ba} bathrooms</h3>
+            <h3>{listing.sqft} sqft.</h3>
+            <h4>
+              {listing.address} {listing.city} <br /> {listing.location}{" "}
+              {listing.zipcode}
+            </h4>
+            <h3> Built in {listing.yb}</h3>
+          </div>
+          {loggedIn ? (
+            <>
+              <Edit house={listing} renderData={renderData} />
+              <button className="delete" value={listing._id} onClick={remove}>
+                DELETE
+              </button>
+            </>
+          ) : null}
         </>
       ) : (
         <div>
@@ -191,6 +180,24 @@ export default function View(props) {
           />
         </div>
       )}
+      <div className="footer">
+        <div>
+          <h2>Andy Checo</h2>
+          <a href="https://www.linkedin.com/in/andy-checo/">LinkedIn</a>
+          <a href="https://github.com/savedcity/">Github</a>
+        </div>
+        <div>
+          <Link to="/">
+            <div className="foot-logo-div">
+              <img
+                className="nav-logo-house"
+                src="https://www.pngrepo.com/download/29024/home-symbol.png"
+              />
+              <h2 className="nav-logo-name">myHome</h2>
+            </div>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
