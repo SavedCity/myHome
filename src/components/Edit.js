@@ -62,6 +62,25 @@ function Edit(props) {
           type="hidden"
         />
 
+        <label>State</label>
+        <select
+          onChange={(event) => {
+            setLocation(event.target.value);
+          }}
+          required
+          name="location"
+          value={location}
+        >
+          <option value="">Choose</option>
+          <option value="TX">Texas</option>
+          <option value="FL">Florida</option>
+          <option value="NC">North Carolina</option>
+          <option value="SC">South Carolina</option>
+          <option value="GA">Georgia</option>
+          <option value="LA">Louisiana</option>
+          <option value="VA">Virginia</option>
+        </select>
+
         <label>Price</label>
         <input
           onChange={(event) => {
@@ -189,25 +208,6 @@ function Edit(props) {
           type="number"
         />
 
-        <label>State</label>
-        <select
-          onChange={(event) => {
-            setLocation(event.target.value);
-          }}
-          required
-          name="location"
-        >
-          <option value="" disabled selected>
-            Choose
-          </option>
-          <option value="TX">Texas</option>
-          <option value="FL">Florida</option>
-          <option value="NC">North Carolina</option>
-          <option value="SC">South Carolina</option>
-          <option value="GA">Georgia</option>
-          <option value="LA">Louisiana</option>
-          <option value="VA">Virginia</option>
-        </select>
         <label>City</label>
         <input
           onChange={(event) => {
@@ -250,6 +250,7 @@ function Edit(props) {
             setYb(event.target.value);
           }}
           required
+          value={yb}
           name="yb"
         >
           <option value="2021">2021</option>
